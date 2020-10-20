@@ -62,11 +62,30 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%;
     }
 
   </style>
 
   <script>
+const hourHand = document.querySelector('.hour-hand');
+const minHand = document.querySelector('.min-hand');
+const secondHand = document.querySelector('.second-hand');
+
+const d = new Date();
+const h = d.getHours() < 10 ? "0" + d.getHours() : d.getHours();
+const min = d.getMinutes();
+const sec = d.getSeconds();
+
+console.log(h);
+
+const setTime = (t, hand, x) => {
+  hand.style.setProperty("transform", `rotate(${x * t + 90}deg`);
+};
+
+setTime(min, minHand, 6);
+setTime(sec, secondHand, 6);
+setTime(h, hourHand, 60);
 
 
   </script>
