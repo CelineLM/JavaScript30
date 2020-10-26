@@ -65,15 +65,16 @@
 
     function changeCSS() {
       if (this.id === 'spacing') {
-        root.style.setProperty('--spacing', this.value + 'px');
+        root.style.setProperty('--spacing', this.value + this.dataset.sizing);
       } else if (this.id === 'blur') {
-        root.style.setProperty('--blur', this.value + 'px');
+        root.style.setProperty('--blur', this.value + this.dataset.sizing);
       } else {
         root.style.setProperty('--base', this.value);
       }
     };
 
     inputs.forEach(input => input.addEventListener('change', changeCSS));
+    inputs.forEach(input => input.addEventListener('mousemove', changeCSS));
   </script>
 
 </body>
