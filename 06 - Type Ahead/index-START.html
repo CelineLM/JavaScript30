@@ -14,8 +14,35 @@
       <li>or a state</li>
     </ul>
   </form>
+
 <script>
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+const cities = [];
+const list = document.querySelector('.suggestions');
+
+const fetchCities = () => {
+  fetch(endpoint)
+  .then(response => response.json())
+  .then((array) => {
+    array.forEach(data => cities.push(data.city));
+    });
+  return cities
+};
+
+const searchLocation = (event) => {
+  const searchValue = event.currentTarget.value;
+  const citiesArr = fetchCities();
+  list.innerHTML = '';
+  citiesArr.forEach(city => {
+    if (city.includes(searchValue)) {
+      list.insertAdjacentHTML("beforeend", `<li>${city}</li>`);
+    }
+  });
+};
+
+const searchField = document.querySelector('.search');
+searchField.addEventListener('keyup', searchLocation);
+
 
 </script>
 </body>
