@@ -28,9 +28,9 @@
     const today = new Date
     const thisYear = today.getFullYear()
     // Array.prototype.some() // is at least one person 19 or older?
-    const OneAboveNineteen = people.some(person => thisYear - person.year > 19);
+    const OneAboveNineteen = people.some(person => thisYear - person.year > 18);
     // Array.prototype.every() // is everyone 19 or older?
-    const EveryoneAboveNineteen = people.every(person => thisYear - person.year > 19);
+    const EveryoneAboveNineteen = people.every(person => thisYear - person.year > 18);
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
